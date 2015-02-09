@@ -1,4 +1,5 @@
 ActiveAdmin.register FrankenBrewery do
+  permit_params :brewer_name, :address, :city, :district, :rbid, :active, :founded, :brewer_type, :score, :lat, :lon, :web, :hours, :description, :phone
 
 
   # See permitted parameters documentation:
