@@ -1,5 +1,5 @@
 class FrankenBeersController < ApplicationController
-  before_action :set_franken_beer, only: [:show, :edit, :update, :destroy]
+  before_action :set_franken_beer, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /franken_beers
   # GET /franken_beers.json
