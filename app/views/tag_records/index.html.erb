@@ -1,0 +1,27 @@
+<h1>Listing tag_records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Franken beer</th>
+      <th>Tag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tag_records.each do |tag_record| %>
+      <tr>
+        <td><%= tag_record.franken_beer %></td>
+        <td><%= tag_record.tag %></td>
+        <td><%= link_to 'Show', tag_record %></td>
+        <td><%= link_to 'Edit', edit_tag_record_path(tag_record) %></td>
+        <td><%= link_to 'Destroy', tag_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tag record', new_tag_record_path %>

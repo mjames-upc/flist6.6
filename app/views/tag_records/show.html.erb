@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Franken beer:</strong>
+  <%= @tag_record.franken_beer %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @tag_record.tag %>
+</p>
+
+<%= link_to 'Edit', edit_tag_record_path(@tag_record) %> |
+<%= link_to 'Back', tag_records_path %>

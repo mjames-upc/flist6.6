@@ -1,0 +1,2 @@
+module TagRecordsHelper
+end
