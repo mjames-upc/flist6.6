@@ -1,4 +1,5 @@
 ActiveAdmin.register FrankenRating do
+  permit_params :score, :comment, :serving
 
 
   # See permitted parameters documentation:
