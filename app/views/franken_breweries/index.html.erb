@@ -1,0 +1,53 @@
+<h1>Listing franken_breweries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brewer name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>District</th>
+      <th>Rbid</th>
+      <th>Active</th>
+      <th>Founded</th>
+      <th>Brewer type</th>
+      <th>Score</th>
+      <th>Lat</th>
+      <th>Lon</th>
+      <th>Web</th>
+      <th>Hours</th>
+      <th>Description</th>
+      <th>Phone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @franken_breweries.each do |franken_brewery| %>
+      <tr>
+        <td><%= franken_brewery.brewer_name %></td>
+        <td><%= franken_brewery.address %></td>
+        <td><%= franken_brewery.city %></td>
+        <td><%= franken_brewery.district %></td>
+        <td><%= franken_brewery.rbid %></td>
+        <td><%= franken_brewery.active %></td>
+        <td><%= franken_brewery.founded %></td>
+        <td><%= franken_brewery.brewer_type %></td>
+        <td><%= franken_brewery.score %></td>
+        <td><%= franken_brewery.lat %></td>
+        <td><%= franken_brewery.lon %></td>
+        <td><%= franken_brewery.web %></td>
+        <td><%= franken_brewery.hours %></td>
+        <td><%= franken_brewery.description %></td>
+        <td><%= franken_brewery.phone %></td>
+        <td><%= link_to 'Show', franken_brewery %></td>
+        <td><%= link_to 'Edit', edit_franken_brewery_path(franken_brewery) %></td>
+        <td><%= link_to 'Destroy', franken_brewery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Franken brewery', new_franken_brewery_path %>
