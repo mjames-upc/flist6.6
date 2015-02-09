@@ -1,35 +1,40 @@
-<h1>Listing franken_ratings</h1>
-
-<table>
+<%- model_class = FrankenRating -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => FrankenRating %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Score</th>
-      <th>Comment</th>
-      <th>Serving</th>
-      <th>User</th>
-      <th>Franken beer</th>
-      <th>Franken brewery</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:score) %></th>
+      <th><%= model_class.human_attribute_name(:comment) %></th>
+      <th><%= model_class.human_attribute_name(:serving) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @franken_ratings.each do |franken_rating| %>
       <tr>
+        <td><%= franken_rating.id %></td>
         <td><%= franken_rating.score %></td>
         <td><%= franken_rating.comment %></td>
         <td><%= franken_rating.serving %></td>
-        <td><%= franken_rating.user %></td>
-        <td><%= franken_rating.franken_beer %></td>
-        <td><%= franken_rating.franken_brewery %></td>
-        <td><%= link_to 'Show', franken_rating %></td>
-        <td><%= link_to 'Edit', edit_franken_rating_path(franken_rating) %></td>
-        <td><%= link_to 'Destroy', franken_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l franken_rating.created_at, format: :long %></td>
+        <td>
+          <%= link_to franken_rating_path(franken_rating), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to franken_rating_path(franken_rating), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Franken rating', new_franken_rating_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_franken_rating_path,
+            :class => 'btn btn-primary' %>

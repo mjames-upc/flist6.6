@@ -1,16 +1,28 @@
-<%= simple_form_for(@franken_rating) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :score %>
-    <%= f.input :comment %>
-    <%= f.input :serving %>
-    <%= f.association :user %>
-    <%= f.association :franken_beer %>
-    <%= f.association :franken_brewery %>
+<%= form_for @franken_rating, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :score, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :score, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :comment, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :serving, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :serving, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  franken_ratings_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
