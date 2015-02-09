@@ -1,14 +1,22 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = TagRecord -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => TagRecord %></h1>
+</div>
 
-<p>
-  <strong>Franken beer:</strong>
-  <%= @tag_record.franken_beer %>
-</p>
+<div class="fieldset">
+  <dl>
+  </dl>
+</div>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @tag_record.tag %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              tag_records_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_tag_record_path(@tag_record), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              tag_record_path(@tag_record),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<%= link_to 'Edit', edit_tag_record_path(@tag_record) %> |
-<%= link_to 'Back', tag_records_path %>
