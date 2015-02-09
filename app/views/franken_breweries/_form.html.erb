@@ -1,25 +1,100 @@
-<%= simple_form_for(@franken_brewery) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :brewer_name %>
-    <%= f.input :address %>
-    <%= f.input :city %>
-    <%= f.input :district %>
-    <%= f.input :rbid %>
-    <%= f.input :active %>
-    <%= f.input :founded %>
-    <%= f.input :brewer_type %>
-    <%= f.input :score %>
-    <%= f.input :lat %>
-    <%= f.input :lon %>
-    <%= f.input :web %>
-    <%= f.input :hours %>
-    <%= f.input :description %>
-    <%= f.input :phone %>
+<%= form_for @franken_brewery, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :brewer_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :brewer_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :address, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :city, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :city, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :district, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :district, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :rbid, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :rbid, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :active, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :active, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :founded, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :founded, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :brewer_type, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :brewer_type, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :score, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :score, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :lat, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :lat, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :lon, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :lon, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :web, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :web, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :hours, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :hours, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :description, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :phone, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  franken_breweries_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
