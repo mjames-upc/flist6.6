@@ -1,4 +1,5 @@
 ActiveAdmin.register FrankenBeer do
+  permit_params :beername, :active, :rbid
 
 
   # See permitted parameters documentation:
