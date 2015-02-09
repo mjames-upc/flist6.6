@@ -1,6 +1,5 @@
-<h1>Editing franken_beer</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @franken_beer %> |
-<%= link_to 'Back', franken_beers_path %>
+<%- model_class = FrankenBeer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => FrankenBeer %></h1>
+</div>
+<%= render :partial => 'form' %>

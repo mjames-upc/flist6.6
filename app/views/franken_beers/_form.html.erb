@@ -1,14 +1,28 @@
-<%= simple_form_for(@franken_beer) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :beername %>
-    <%= f.input :active %>
-    <%= f.input :rbid %>
-    <%= f.association :franken_brewery %>
+<%= form_for @franken_beer, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :beername, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :beername, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :active, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :active, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :rbid, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :rbid, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  franken_beers_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
