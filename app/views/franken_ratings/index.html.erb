@@ -1,0 +1,35 @@
+<h1>Listing franken_ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Score</th>
+      <th>Comment</th>
+      <th>Serving</th>
+      <th>User</th>
+      <th>Franken beer</th>
+      <th>Franken brewery</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @franken_ratings.each do |franken_rating| %>
+      <tr>
+        <td><%= franken_rating.score %></td>
+        <td><%= franken_rating.comment %></td>
+        <td><%= franken_rating.serving %></td>
+        <td><%= franken_rating.user %></td>
+        <td><%= franken_rating.franken_beer %></td>
+        <td><%= franken_rating.franken_brewery %></td>
+        <td><%= link_to 'Show', franken_rating %></td>
+        <td><%= link_to 'Edit', edit_franken_rating_path(franken_rating) %></td>
+        <td><%= link_to 'Destroy', franken_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Franken rating', new_franken_rating_path %>

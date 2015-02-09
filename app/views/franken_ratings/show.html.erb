@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @franken_rating.score %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @franken_rating.comment %>
+</p>
+
+<p>
+  <strong>Serving:</strong>
+  <%= @franken_rating.serving %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @franken_rating.user %>
+</p>
+
+<p>
+  <strong>Franken beer:</strong>
+  <%= @franken_rating.franken_beer %>
+</p>
+
+<p>
+  <strong>Franken brewery:</strong>
+  <%= @franken_rating.franken_brewery %>
+</p>
+
+<%= link_to 'Edit', edit_franken_rating_path(@franken_rating) %> |
+<%= link_to 'Back', franken_ratings_path %>
