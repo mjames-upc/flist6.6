@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :franken_beers
+
   resources :franken_breweries
 
   resources :tag_records

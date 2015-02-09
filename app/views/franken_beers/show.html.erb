@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Beername:</strong>
+  <%= @franken_beer.beername %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @franken_beer.active %>
+</p>
+
+<p>
+  <strong>Rbid:</strong>
+  <%= @franken_beer.rbid %>
+</p>
+
+<p>
+  <strong>Franken brewery:</strong>
+  <%= @franken_beer.franken_brewery %>
+</p>
+
+<%= link_to 'Edit', edit_franken_beer_path(@franken_beer) %> |
+<%= link_to 'Back', franken_beers_path %>

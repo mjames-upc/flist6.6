@@ -1,0 +1,31 @@
+<h1>Listing franken_beers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Beername</th>
+      <th>Active</th>
+      <th>Rbid</th>
+      <th>Franken brewery</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @franken_beers.each do |franken_beer| %>
+      <tr>
+        <td><%= franken_beer.beername %></td>
+        <td><%= franken_beer.active %></td>
+        <td><%= franken_beer.rbid %></td>
+        <td><%= franken_beer.franken_brewery %></td>
+        <td><%= link_to 'Show', franken_beer %></td>
+        <td><%= link_to 'Edit', edit_franken_beer_path(franken_beer) %></td>
+        <td><%= link_to 'Destroy', franken_beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Franken beer', new_franken_beer_path %>
