@@ -1,4 +1,5 @@
 ActiveAdmin.register TagRecord do
+  permit_params 
 
 
   # See permitted parameters documentation:
