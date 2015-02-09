@@ -29,6 +29,7 @@ class FrankenRatingsController < ApplicationController
   # POST /franken_ratings.json
   def create
     @franken_rating = FrankenRating.new(franken_rating_params)
+    @franken_rating.user = current_user
 
     respond_to do |format|
       if @franken_rating.save
