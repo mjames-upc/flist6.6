@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'breweries/index'
+
   resources :franken_ratings do
   #->Prelang (voting/acts_as_votable)
   member do
