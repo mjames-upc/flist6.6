@@ -5,6 +5,8 @@ class FrankenBreweriesController < ApplicationController
   # GET /franken_breweries.json
   def index
     @franken_breweries = FrankenBrewery.all
+    @franken_breweries_active = FrankenBrewery.all.where(:active => true)
+    @franken_breweries_retired = FrankenBrewery.all.where(:active => false)
   end
 
   # GET /franken_breweries/1
