@@ -4,8 +4,10 @@ class CreateFrankenBeers < ActiveRecord::Migration
       t.string :beername
       t.boolean :active
       t.integer :rbid
+      t.integer :rbbrewer
       t.references :franken_brewery, index: true
-
+      t.float :alcohol
+      t.text :description
       t.timestamps
     end
   end

@@ -53,7 +53,10 @@ ActiveRecord::Schema.define(version: 20150209174403) do
     t.string   "beername"
     t.boolean  "active"
     t.integer  "rbid"
+    t.integer  "rbbrewer"
     t.integer  "franken_brewery_id"
+    t.float    "alcohol"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
