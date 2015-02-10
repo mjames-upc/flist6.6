@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'sprig', '~> 0.1'
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
