@@ -2,6 +2,12 @@
 <div class="page-header">
   <h1><%=t '.title', :default => Tag %></h1>
 </div>
+
+<% @tags.each do |tag| %>
+  <%= link_to tag_path(tag), :class => 'btn btn-lg', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+    <%= tag.name %></a> 
+  <%- end -%>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
