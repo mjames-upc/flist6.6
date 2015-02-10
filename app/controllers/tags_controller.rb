@@ -10,6 +10,7 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+    @tag = Tag.find_by_simple!(params[:id])
   end
 
   # GET /tags/new
@@ -64,7 +65,7 @@ class TagsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tag
-      @tag = Tag.find(params[:id])
+      @tag = Tag.find_by_simple!(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
