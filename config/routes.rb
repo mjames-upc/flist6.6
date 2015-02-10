@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'tags/index'
+  get 'franken_breweries/index'
 
   resources :franken_ratings do
   #->Prelang (voting/acts_as_votable)

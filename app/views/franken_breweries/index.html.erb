@@ -20,7 +20,9 @@
       <th><%= model_class.human_attribute_name(:hours) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
+      <% if user_signed_in? %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -40,6 +42,7 @@
         <td><%= franken_brewery.hours %></td>
         <td><%= franken_brewery.description %></td>
         <td><%= franken_brewery.phone %></td>
+        <% if user_signed_in? %>
         <td>
           <%= link_to franken_brewery_path(franken_brewery), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
@@ -49,6 +52,7 @@
             <%= glyph 'remove' %>
           <%- end -%>
         </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -71,7 +75,9 @@
       <th><%= model_class.human_attribute_name(:hours) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
+      <% if user_signed_in? %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
     <% @franken_breweries_retired.each do |franken_brewery| %>
@@ -90,6 +96,7 @@
         <td><%= franken_brewery.hours %></td>
         <td><%= franken_brewery.description %></td>
         <td><%= franken_brewery.phone %></td>
+        <% if user_signed_in? %>
         <td>
           <%= link_to franken_brewery_path(franken_brewery), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
@@ -99,6 +106,7 @@
             <%= glyph 'remove' %>
           <%- end -%>
         </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
