@@ -3,3 +3,9 @@
 include Sprig::Helpers
 
 sprig [Tag, FrankenBrewery, FrankenBeer]
+ActiveRecord::Base.record_timestamps = false
+begin
+  sprig [FrankenRating]
+ensure
+  ActiveRecord::Base.record_timestamps = true  # don't forget to enable it again!
+end

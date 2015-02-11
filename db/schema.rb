@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 20150209174403) do
     t.float    "score"
     t.text     "comment"
     t.integer  "serving"
+    t.integer  "rbid"
+    t.integer  "rbbrewer"
     t.integer  "user_id"
     t.integer  "franken_beer_id"
     t.integer  "franken_brewery_id"
