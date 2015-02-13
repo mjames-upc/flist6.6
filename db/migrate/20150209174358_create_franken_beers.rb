@@ -7,6 +7,7 @@ class CreateFrankenBeers < ActiveRecord::Migration
       t.integer :rbbrewer
       t.references :franken_brewery, index: true
       t.float :alcohol
+      t.float :score
       t.text :description
       t.timestamps
     end

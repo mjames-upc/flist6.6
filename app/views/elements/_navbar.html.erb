@@ -7,12 +7,16 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to "My Application", defined?(root_path) ? root_path : "#", class: "navbar-brand" %>
+    <%= link_to "home", defined?(root_path) ? root_path : "#", class: "navbar-brand" %>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="navbar-collapse-1">
     <ul class="nav navbar-nav">
+          <li><%= link_to "Breweries", franken_breweries_path %></li>
+          <li><%= link_to "Beer", franken_beers_path %></li>
+          <li><%= link_to "Ratings", franken_ratings_path %></li>
+          <li><%= link_to "Styles", tags_path %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if defined?(Devise) %>

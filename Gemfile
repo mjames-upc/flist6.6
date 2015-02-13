@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'underscore-rails'
+gem 'gmaps4rails'
 gem 'sprig', '~> 0.1'
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -2,8 +2,10 @@ class CreateFrankenBreweries < ActiveRecord::Migration
   def change
     create_table :franken_breweries do |t|
       t.string :brewer_name
+      t.string :slug
       t.string :address
       t.string :city
+      t.string :city_slug
       t.string :district
       t.integer :rbid
       t.boolean :active
