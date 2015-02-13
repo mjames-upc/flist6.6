@@ -4,7 +4,7 @@ class FrankenBrewery < ActiveRecord::Base
   has_many :franken_ratings
 
   extend FriendlyId
-    friendly_id :brewer_name
+    friendly_id :brewer_name, use: :slugged
 
   def to_param
     slug
@@ -14,4 +14,5 @@ class FrankenBrewery < ActiveRecord::Base
     self.slug = self.brewer_name.parameterize
     self.city_slug = self.city.parameterize
   end
+
 end

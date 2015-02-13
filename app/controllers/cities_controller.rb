@@ -1,4 +1,4 @@
-class FrankenBreweriesController < ApplicationController
+class CitiesController < ApplicationController
   before_action :set_franken_brewery, only: [:show, :edit, :update, :destroy]
 
   # GET /franken_breweries
@@ -42,11 +42,6 @@ class FrankenBreweriesController < ApplicationController
   def show
     @brewery_records = FrankenBeer.where(franken_brewery_id: @franken_brewery.id)
     @brewery_ratings = FrankenRating.where(franken_brewery_id: @franken_brewery.id)
-    @title = "#{@franken_brewery.brewer_name}, #{@franken_brewery.city}, #{@franken_brewery.district} Franconia"
-  end
-
-  def city
-    @city_breweries = FrankenBrewery.where(city: @franken_brewery.city)
   end
 
   # GET /franken_breweries/new
@@ -101,7 +96,7 @@ class FrankenBreweriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_franken_brewery
-      @franken_brewery = FrankenBrewery.friendly.find(params[:id])
+      @franken_brewery = FrankenBrewery.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

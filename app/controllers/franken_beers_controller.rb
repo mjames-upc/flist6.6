@@ -10,6 +10,8 @@ class FrankenBeersController < ApplicationController
   # GET /franken_beers/1
   # GET /franken_beers/1.json
   def show
+    @beer_ratings = FrankenRating.where(franken_beer_id: @franken_beer.id)
+    @title = "#{@franken_beer.beername} - Franconian Breweries"
   end
 
   # GET /franken_beers/new
@@ -84,7 +86,7 @@ class FrankenBeersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_franken_beer
-      @franken_beer = FrankenBeer.find(params[:id])
+      @franken_beer = FrankenBeer.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

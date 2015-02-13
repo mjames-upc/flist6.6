@@ -12,9 +12,16 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :rbid, :class => 'control-label col-md-2' %>
+    <%= f.label :alcohol, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.number_field :rbid, :class => 'text-field form-control' %>
+      <%= f.number_field :alcohol, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Brewery", :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select(:franken_brewery_id,FrankenBrewery.all,:id, :brewer_name,{ :prompt => true}, {:class => 'text-field form-control' }) %>
     </div>
   </div>
 

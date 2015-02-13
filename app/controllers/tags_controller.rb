@@ -11,6 +11,8 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
     @tag = Tag.find_by_simple!(params[:id])
+    @tag_records = TagRecord.where(tag_id: @tag.id)
+    @title = "#{@tag.name} - Franconian Breweries"
   end
 
   # GET /tags/new

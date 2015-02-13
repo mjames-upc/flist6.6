@@ -51,11 +51,13 @@ ActiveRecord::Schema.define(version: 20150209174403) do
 
   create_table "franken_beers", force: true do |t|
     t.string   "beername"
+    t.string   "slug"
     t.boolean  "active"
     t.integer  "rbid"
     t.integer  "rbbrewer"
     t.integer  "franken_brewery_id"
     t.float    "alcohol"
+    t.float    "score"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -65,8 +67,10 @@ ActiveRecord::Schema.define(version: 20150209174403) do
 
   create_table "franken_breweries", force: true do |t|
     t.string   "brewer_name"
+    t.string   "slug"
     t.string   "address"
     t.string   "city"
+    t.string   "city_slug"
     t.string   "district"
     t.integer  "rbid"
     t.boolean  "active"

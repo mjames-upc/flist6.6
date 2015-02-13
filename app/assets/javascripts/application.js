@@ -17,4 +17,5 @@
 
 //= require underscore
 //= require gmaps/google
+//= require jquery-tablesorter
 //= require_tree .
