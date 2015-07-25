@@ -19,3 +19,26 @@
 //= require gmaps/google
 //= require jquery-tablesorter
 //= require_tree .
+$(function() {
+  $("#search th a, #search .pagination a").on("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  /*
+  $("#franken_beer_search input").keyup(function() {
+    $.get($("#franken_beer_search").attr("action"), $("#franken_beer_search").serialize(), null, "script");
+    console.log("keyup: " +$("#franken_beer_search"));
+    console.log("keyup: " +$("#franken_beer_search").attr("action"));
+    return false;
+  });
+  */
+  $("#franken_beer_search").submit(function() {
+    $.get(this.action, $(this).serialize(), null, "script");
+    //$.get($("#franken_beer_search").attr("action"), $("#franken_beer_search").serialize(), null, "script");
+    console.log($("#franken_beer_search"));
+    
+    console.log($("#franken_beer_search").attr("action"));
+    console.log($(this));
+    return false;
+  });
+});

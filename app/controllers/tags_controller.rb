@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /tags
   # GET /tags.json
@@ -13,6 +14,7 @@ class TagsController < ApplicationController
     @tag = Tag.find_by_simple!(params[:id])
     @tag_records = TagRecord.where(tag_id: @tag.id)
     @title = "#{@tag.name} - Franconian Breweries"
+    @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /tags/new
@@ -73,5 +75,12 @@ class TagsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
       params.require(:tag).permit(:name, :simple)
+    end
+    def sort_column
+      FrankenBeer.column_names.include?(params[:sort]) ? params[:sort] : "beername"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

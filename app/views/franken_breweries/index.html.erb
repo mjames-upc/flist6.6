@@ -27,22 +27,18 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 });
 
 </script>
-<table class="table table-striped tablesorter">
+<table class="table table-striped tablesorter" id="brewery_table">
   <thead> 
     <tr>
       <th><%= model_class.human_attribute_name(:brewer_name) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th data-sorter="false"><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:city) %></th>
       <th><%= model_class.human_attribute_name(:district) %></th>
-      <th><%= model_class.human_attribute_name(:rbid) %></th>
       <th><%= model_class.human_attribute_name(:founded) %></th>
-      <th><%= model_class.human_attribute_name(:brewer_type) %></th>
+      <th data-sorter="false"><%= model_class.human_attribute_name(:brewer_type) %></th>
       <th><%= model_class.human_attribute_name(:score) %></th>
-      <th><%= model_class.human_attribute_name(:lat) %></th>
-      <th><%= model_class.human_attribute_name(:lon) %></th>
       <th><%= model_class.human_attribute_name(:web) %></th>
       <th><%= model_class.human_attribute_name(:hours) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <% if user_signed_in? %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -54,17 +50,13 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       <tr>
         <td><%= link_to franken_brewery_path(franken_brewery), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do  %><%= franken_brewery.brewer_name %><%- end -%></td>
         <td><%= franken_brewery.address %></td>
-	<td><%= franken_brewery.city %></td>
+	<td><%= link_to city_path(franken_brewery.city), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do  %><%=  franken_brewery.city %><%- end -%></td>
         <td><%= franken_brewery.district %></td>
-        <td><%= franken_brewery.rbid %></td>
         <td><%= franken_brewery.founded %></td>
         <td><%= franken_brewery.brewer_type %></td>
         <td><%= franken_brewery.score %></td>
-        <td><%= franken_brewery.lat %></td>
-        <td><%= franken_brewery.lon %></td>
         <td><%= franken_brewery.web %></td>
         <td><%= franken_brewery.hours %></td>
-        <td><%= franken_brewery.description %></td>
         <td><%= franken_brewery.phone %></td>
         <% if user_signed_in? %>
         <td>

@@ -2,14 +2,26 @@
 <div class="page-header">
   <h1><%=t '.title', :default => FrankenBeer %></h1>
 </div>
+
+
+<%= form_tag franken_beers_path, :method => 'get', :id => "franken_beer_search" do %>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
-      <th><%= model_class.human_attribute_name(:beername) %></th>
-      <th><%= model_class.human_attribute_name(:active) %></th>
-      <th><%= model_class.human_attribute_name(:rbid) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= sortable model_class.human_attribute_name(:beername) %></th>
+      <th><%= sortable model_class.human_attribute_name(:active) %></th>
+      <th><%= sortable model_class.human_attribute_name(:rbid) %></th>
+      <th><%= sortable model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>

@@ -1,10 +1,11 @@
 class FrankenBeersController < ApplicationController
   before_action :set_franken_beer, only: [:show, :edit, :update, :destroy, :vote]
+  helper_method :sort_column, :sort_direction
 
   # GET /franken_beers
   # GET /franken_beers.json
   def index
-    @franken_beers = FrankenBeer.all
+    @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction).take(25)
   end
 
   # GET /franken_beers/1
@@ -92,5 +93,13 @@ class FrankenBeersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def franken_beer_params
       params.require(:franken_beer).permit(:beername, :active, :rbid, :franken_brewery_id)
+    end
+
+    def sort_column
+      FrankenBeer.column_names.include?(params[:sort]) ? params[:sort] : "beername"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

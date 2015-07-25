@@ -40,7 +40,7 @@ class FrankenBreweriesController < ApplicationController
   # GET /franken_breweries/1
   # GET /franken_breweries/1.json
   def show
-    @brewery_records = FrankenBeer.where(franken_brewery_id: @franken_brewery.id)
+    @brewery_records = FrankenBeer.where(rbbrewer: @franken_brewery.rbid)
     @brewery_ratings = FrankenRating.where(franken_brewery_id: @franken_brewery.id)
     @title = "#{@franken_brewery.brewer_name}, #{@franken_brewery.city}, #{@franken_brewery.district} Franconia"
   end

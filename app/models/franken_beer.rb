@@ -20,4 +20,12 @@ class FrankenBeer < ActiveRecord::Base
   def should_generate_new_friendly_id?
     slug.blank? || beername_changed?
   end
+ 
+  def self.search(search)
+    if search
+      where('lower(beername) LIKE ?', "%#{search.downcase}%")
+    else 
+      all
+    end
+  end
 end

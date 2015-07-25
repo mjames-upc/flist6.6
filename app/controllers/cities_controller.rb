@@ -1,30 +1,11 @@
 class CitiesController < ApplicationController
-  before_action :set_franken_brewery, only: [:show, :edit, :update, :destroy]
+  before_action :set_city, only: [:show]
 
-  # GET /franken_breweries
-  # GET /franken_breweries.json
+  # GET /cities
+  # GET /cities.json
   def index
-    @franken_breweries = FrankenBrewery.all
-    @franken_breweries_active = FrankenBrewery.all.where(:active => true)
-    @franken_breweries_retired = FrankenBrewery.all.where(:active => false)
-    @markers_breweries_active = Gmaps4rails.build_markers(@franken_breweries_active) do |franken_brewery, marker|
-      marker.lat franken_brewery.lat
-      marker.lng franken_brewery.lon
-      marker.picture({
-        "url" => view_context.image_path('/icons/pin_r.png'),
-        "width" => 12,
-        "height" => 20
-      })
-    end
-    @markers_breweries_retired = Gmaps4rails.build_markers(@franken_breweries_retired) do |franken_brewery, marker|
-      marker.lat franken_brewery.lat
-      marker.lng franken_brewery.lon
-      marker.picture({
-        "url" => view_context.image_path('/icons/pin_r.png'),
-        "width" => 12,
-        "height" => 20
-      })
-    end
+    #@unique_cities = FrankenBrewery.all.map{|t| t.city}.uniq.sort.count(:city)
+    @unique_cities = FrankenBrewery.all.group(:city).count.sort
   end
 
   def gmaps4rails_infowindow
@@ -37,66 +18,25 @@ class CitiesController < ApplicationController
     "titlestring"
   end
 
-  # GET /franken_breweries/1
-  # GET /franken_breweries/1.json
+  # GET /cities/1
+  # GET /cities/1.json
   def show
-    @brewery_records = FrankenBeer.where(franken_brewery_id: @franken_brewery.id)
-    @brewery_ratings = FrankenRating.where(franken_brewery_id: @franken_brewery.id)
-  end
-
-  # GET /franken_breweries/new
-  def new
-    @franken_brewery = FrankenBrewery.new
-  end
-
-  # GET /franken_breweries/1/edit
-  def edit
-  end
-
-  # POST /franken_breweries
-  # POST /franken_breweries.json
-  def create
-    @franken_brewery = FrankenBrewery.new(franken_brewery_params)
-
-    respond_to do |format|
-      if @franken_brewery.save
-        format.html { redirect_to @franken_brewery, notice: 'Franken brewery was successfully created.' }
-        format.json { render :show, status: :created, location: @franken_brewery }
-      else
-        format.html { render :new }
-        format.json { render json: @franken_brewery.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /franken_breweries/1
-  # PATCH/PUT /franken_breweries/1.json
-  def update
-    respond_to do |format|
-      if @franken_brewery.update(franken_brewery_params)
-        format.html { redirect_to @franken_brewery, notice: 'Franken brewery was successfully updated.' }
-        format.json { render :show, status: :ok, location: @franken_brewery }
-      else
-        format.html { render :edit }
-        format.json { render json: @franken_brewery.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /franken_breweries/1
-  # DELETE /franken_breweries/1.json
-  def destroy
-    @franken_brewery.destroy
-    respond_to do |format|
-      format.html { redirect_to franken_breweries_url, notice: 'Franken brewery was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+   # @city_records = FrankenBrewery.where(city: @unique_cities.city)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_franken_brewery
-      @franken_brewery = FrankenBrewery.find(params[:id])
+    def set_city
+      @city = FrankenBrewery.where(city: params[:id])
+      @city_markers = Gmaps4rails.build_markers(@city) do |franken_brewery, marker|
+        marker.lat franken_brewery.lat
+        marker.lng franken_brewery.lon
+        marker.picture({
+          "url" => view_context.image_path('/icons/pin_r.png'),
+          "width" => 12,
+          "height" => 20
+        })
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+#gem 'will_paginate', '3.0.pre2'
+gem "will_paginate", :git => "https://github.com/mislav/will_paginate.git", :branch => "3-0-stable"
+
+gem 'jquery-tablesorter'
+gem 'friendly_id'
+gem 'slugged'
 gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'sprig', '~> 0.1'
