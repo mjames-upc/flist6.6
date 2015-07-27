@@ -96,5 +96,15 @@
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   franken_breweries_path, :class => 'btn btn-default' %>
     </div>
+
+    <div class='col-md-offset-2 col-md-10' style="padding-top:30px;">
+      <%= link_to t('.delete', :default => t("helpers.links.destroy")),
+                  franken_brewery_path(@franken_brewery),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger' %>
+    </div>
+
+
   </div>
 <% end %>
