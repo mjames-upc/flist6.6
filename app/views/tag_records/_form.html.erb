@@ -1,5 +1,18 @@
 <%= form_for @tag_record, :html => { :class => 'form-horizontal form-model' } do |f| %>
 
+
+    <div class="form-group">
+      <%= f.label "Beer", :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.collection_select(:franken_beer_id,FrankenBeer.all,:id, :beername,{ :prompt => true}, {:class => 'text-field form-control' }) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "Tag", :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.collection_select(:tag_id,Tag.all,:id, :name,{ :prompt => true}, {:class => 'text-field form-control' }) %>
+      </div>
+    </div>
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>

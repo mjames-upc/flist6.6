@@ -24,4 +24,13 @@
                   tags_path, :class => 'btn btn-default' %>
     </div>
   </div>
+    <div class="form-group">
+      <div class='col-md-offset-2 col-md-10'>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                tag_path(@tag),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+      </div>
+      </div>
 <% end %>

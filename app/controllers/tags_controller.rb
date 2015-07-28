@@ -12,9 +12,9 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
     @tag = Tag.find_by_simple!(params[:id])
-    @tag_records = TagRecord.where(tag_id: @tag.id)
+    @tag_records = FrankenBeer.joins(:tag_records)
     @title = "#{@tag.name} - Franconian Breweries"
-    @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction)
   end
 
   # GET /tags/new

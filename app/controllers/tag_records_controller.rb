@@ -37,6 +37,22 @@ class TagRecordsController < ApplicationController
     end
   end
 
+  # POST /tag_records
+  # POST /tag_records.json
+  def createmany
+    @tag_record = TagRecord.new(tag_record_params)
+
+    respond_to do |format|
+      if @tag_record.save
+        format.html { redirect_to @tag_record, notice: 'Tag record was successfully created.' }
+        format.json { render :show, status: :created, location: @tag_record }
+      else
+        format.html { render :new }
+        format.json { render json: @tag_record.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /tag_records/1
   # PATCH/PUT /tag_records/1.json
   def update
@@ -69,6 +85,6 @@ class TagRecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_record_params
-      params.require(:tag_record).permit(:franken_beer_id, :tag_id)
+      params.permit(:franken_beer_id, :tag_id)
     end
 end
