@@ -73,17 +73,49 @@ $(document).ready(function($) {
         return false;
     });
 
-    // Search form.
-    $('#franken_beers_search').submit(function () {
-        console.log("submitting from application.js");
-        $.get(this.action, $(this).serialize(), null, 'script');
-        return false;
+
+    $("#add_all").click(function() {
+        var tag_id = $('#tag_id').val();
+        var selected = [];
+        checkCount = $('input:checkbox.franken_beer_id').length;
+
+        console.log(checkCount);
+        $('input:checkbox.franken_beer_id').each(function () {
+            if (this.checked ){
+                selected.push($(this).val())
+                console.log(selected);
+            }
+        });
+
+        $.each(selected, function(index, item) {
+            // do something with `item` (or `this` is also `item` if you like)
+            console.log(item + ", " + tag_id);
+            $.ajax({
+                type: "POST",
+                url: "/tag_records?franken_beer_id="+item+"&tag_id="+tag_id,
+                dataType: "json",
+                success: function (data) {
+                    console.log("...success")
+                    return false
+                }
+            });
+        });
+
+
     });
 
-    //$('.check_all').click(function () {
-    //    console.log(this.checked);
-    //    $('#tag_search').find(':checkbox').prop('checked', this.checked);
+// Search form.
+    //$('#franken_beers_search').submit(function () {
+    //    console.log("submitting franken_beers_search from application.js");
+    //    $.get(this.action, $(this).serialize(), null, 'script');
+    //    return false;
     //});
 
+    //// Click to associate link
+    //$("add_association").click(function () {
+    //    console.log("submitting add_association from application.js");
+    //    $.get(this.action, $(this).serialize(), null, 'script');
+    //    return false;
+    //});
 });
 

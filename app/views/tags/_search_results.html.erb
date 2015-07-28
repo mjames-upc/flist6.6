@@ -18,7 +18,7 @@
     <% @franken_beers.each do |franken_beer| %>
         <tr>
           <td>
-            <%= check_box_tag "franken_beer_id", franken_beer.id %>
+            <%= check_box_tag "franken_beer_id", franken_beer.id, false, :class => 'franken_beer_id' %>
             <%= hidden_field_tag "tag_id", @tag.id %>
 
           </td>
@@ -41,17 +41,7 @@
             <% end %>
           </td>
           <td>
-          <% if user_signed_in? %>
-
-                <%= link_to franken_beer_path(franken_beer), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-                    <%= glyph 'info-sign' %>
-                    <%= glyph 'pencil' %>
-                <%- end -%>
-                <%= link_to franken_beer_path(franken_beer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-                    <%= glyph 'remove' %>
-                <%- end -%>
-          <% end %>
-          <%= link_to "Add Association", tag_records_path(:franken_beer_id => franken_beer.id,:tag_id => @tag.id), :method => :post %>
+            <%= link_to "Add Association", tag_records_path(:franken_beer_id => franken_beer.id,:tag_id => @tag.id), :method => :post, class: 'add_association', :remote => true %>
           </td>
         </tr>
   <% end %>

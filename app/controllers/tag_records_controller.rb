@@ -25,28 +25,15 @@ class TagRecordsController < ApplicationController
   # POST /tag_records.json
   def create
     @tag_record = TagRecord.new(tag_record_params)
-    @tag = Tag.where(:id, @tag_record.tag_id)
-    @franken_beer = FrankenBeer.where(:id, @tag_record.franken_beer_id)
+    #@tag_record = TagRecord.new(:franken_beer_id => params[:franken_beer_id], :tag_id => params[:tag_id])
+
+    @tag = Tag.find(@tag_record.tag_id)
+    @franken_beer = FrankenBeer.find(@tag_record.franken_beer_id)
     respond_to do |format|
       if @tag_record.save
-        format.html { redirect_to @tag, 'successfully added.' }
-        format.json { render :show, status: :created, location: @tag_record }
-      else
-        format.html { render :new }
-        format.json { render json: @tag_record.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # POST /tag_records
-  # POST /tag_records.json
-  def createmany
-    @tag_record = TagRecord.new(tag_record_params)
-
-    respond_to do |format|
-      if @tag_record.save
-        format.html { redirect_to @tag_record, notice: 'Tag record was successfully created.' }
-        format.json { render :show, status: :created, location: @tag_record }
+        format.html { redirect_to @tag }
+        #format.json { render :show, status: :created, location: @tag_record }
+        format.json { render :json => @tag_record}
       else
         format.html { render :new }
         format.json { render json: @tag_record.errors, status: :unprocessable_entity }
@@ -59,7 +46,7 @@ class TagRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @tag_record.update(tag_record_params)
-        format.html { redirect_to @tag_record, notice: 'Tag record was successfully updated.' }
+        format.html { redirect_to @tag_record, notice: 'Record was updated.' }
         format.json { render :show, status: :ok, location: @tag_record }
       else
         format.html { render :edit }
@@ -72,8 +59,10 @@ class TagRecordsController < ApplicationController
   # DELETE /tag_records/1.json
   def destroy
     @tag_record.destroy
+    @tag = Tag.find(@tag_record.tag_id)
+    @franken_beer = FrankenBeer.find(@tag_record.franken_beer_id)
     respond_to do |format|
-      format.html { redirect_to tag_records_url, notice: 'Tag record was successfully destroyed.' }
+      format.html { redirect_to @tag }
       format.json { head :no_content }
     end
   end
@@ -88,4 +77,5 @@ class TagRecordsController < ApplicationController
     def tag_record_params
       params.permit(:franken_beer_id, :tag_id)
     end
+
 end

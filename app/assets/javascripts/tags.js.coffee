@@ -1,7 +1,10 @@
 jQuery ->
   $('.check_all').on('click', ->
-    $('#franken_beers').find(':checkbox').prop('checked', this.checked)
+    $('#franken_beers_list').find(':checkbox').prop('checked', this.checked)
   )
+  $('#franken_beers_list input:checked').each ->
+    selected.push($(this).attr('name'))
+    console.log(selected)
 
 #  # Ajax sorting and pagination on click
 #  $('#franken_beers td.sortable a, #franken_beers .pagination a').on('click', ->

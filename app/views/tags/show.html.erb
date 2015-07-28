@@ -11,7 +11,7 @@
 
 <div id="tag_search">
 
-  <div id="tagged_beer"><%= render "tagged_beer" %></div>
+  <div id="tagged_beer_list"><%= render "tagged_beer" %></div>
 
   <%= form_tag tag_path(@tag), :method => 'get', :id => "franken_beers_search", :remote => true do %>
       <%= hidden_field_tag :direction, params[:direction] %>
@@ -25,13 +25,11 @@
 
 </div>
 
-<%= form_tag tag_records_path do %>
 
-    <div id="franken_beers"></div>
+    <div id="franken_beers_list"></div>
 
-    <%= submit_tag "Add Association" %>
+    <%= submit_tag "Add Association", :id=> "add_all" %>
 
-<% end %>
 
 
 

@@ -12,9 +12,12 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
     @tag = Tag.find_by_simple!(params[:id])
-    @tag_records = FrankenBeer.joins(:tag_records)
-    @title = "#{@tag.name} - Franconian Breweries"
-    @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction)
+    @tag_records = FrankenBeer.joins(:tag_records).where(tag_records: { tag_id: @tag.id }).select('distinct franken_beers.*, tag_records.id as tag_record_id').to_a
+    if params.has_key?(:search)
+      @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction)
+    else
+      @franken_beers = []
+    end
   end
 
   # GET /tags/new
@@ -34,7 +37,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       if @tag.save
         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.json { render :show, status: :created, location: @tag }
+        format.json { render :show,  location: @tag }
       else
         format.html { render :new }
         format.json { render json: @tag.errors, status: :unprocessable_entity }

@@ -1,1 +1,12 @@
-$("#franken_beers").html("<%= escape_javascript(render(:partial => "search_results", :locals => {:tag => @tag})) %>");
+console.log(this.$.on);
+console.log(this.$.live);
+/*$(document).on('submit','#franken_beers_search', {} ,function(e){
+    console.log("submitting franken_beers_search from show.js.erb");
+    $("#franken_beers_list").html("<%= escape_javascript(render(:partial => "search_results", :locals => {:tag => @tag })) %>");
+})*/
+
+$("#franken_beers_list").html("<%= escape_javascript(render(:partial => "search_results", :locals => {:tag => @tag })) %>");
+
+$("#tagged_beer_list").html("<%= escape_javascript(render(:partial => "tagged_beer", :locals => {:search => params[:search] })) %>");
+
+
