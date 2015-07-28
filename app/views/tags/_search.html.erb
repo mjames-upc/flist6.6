@@ -1,25 +1,21 @@
-
-
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 <table class="table table-striped">
   <tr>
     <th><%= sortable "beername" %></th>
-    <th><%= sortable "rbid" %></th>
     <th><%=t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   <% for beer in @franken_beers %>
     <tr>
       <td><%= beer.beername %></td>
-      <td><%= beer.rbid %></td>
         <td>
           <%= link_to franken_beer_path(beer), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
             <%= glyph 'pencil' %>
-          <%- end -%>
+          <% end %>
           <%= link_to franken_beer_path(beer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
             <%= glyph 'remove' %>
-          <%- end -%>
+          <% end %>
         </td>
     </tr>
   <% end %>

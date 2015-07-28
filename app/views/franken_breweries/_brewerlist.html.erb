@@ -1,0 +1,95 @@
+<%- model_class = FrankenBrewery -%>
+<table class="table table-striped tablesorter" id="brewery_table">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:brewer_name) %></th>
+    <th><%= model_class.human_attribute_name(:city) %></th>
+    <th></th>
+    <th data-sorter="false"></th>
+    <th><%= model_class.human_attribute_name(:score) %></th>
+    <th><%= model_class.human_attribute_name(:web) %></th>
+    <th><%= model_class.human_attribute_name(:phone) %></th>
+    <% if user_signed_in? %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% @franken_breweries_active.each do |franken_brewery| %>
+      <tr>
+        <td><%= link_to franken_brewery_path(franken_brewery), :onclick => 'showMarker(franken_brewery.id); return false', :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do  %><%= franken_brewery.brewer_name %><% end %></td>
+        <td><%= link_to city_path(franken_brewery.city), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do  %><%=  franken_brewery.city %><% end %></td>
+        <td nowrap><%= franken_brewery.district %> Franconia</td>
+        <td><%= franken_brewery.brewer_type %></td>
+        <td><%= franken_brewery.score %></td>
+        <td><a href="<%= franken_brewery.web %>"><%=icon('link') %></a>
+        </td>
+        <td><a href="tel:<%= franken_brewery.phone %>"><%= franken_brewery.phone %></a></td>
+        <% if user_signed_in? %>
+            <td>
+              <%= link_to franken_brewery_path(franken_brewery), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                  <%= glyph 'info-sign' %>
+                  <%= glyph 'pencil' %>
+              <% end %>
+              <%= link_to franken_brewery_path(franken_brewery), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                  <%= glyph 'remove' %>
+              <% end %>
+            </td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<h1>Closed Breweries</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:brewer_name) %></th>
+    <th><%= model_class.human_attribute_name(:city) %></th>
+    <th></th>
+    <th><%= model_class.human_attribute_name(:rbid) %></th>
+    <th></th>
+    <th><%= model_class.human_attribute_name(:score) %></th>
+    <th><%= model_class.human_attribute_name(:lat) %></th>
+    <th><%= model_class.human_attribute_name(:lon) %></th>
+    <th><%= model_class.human_attribute_name(:web) %></th>
+    <th><%= model_class.human_attribute_name(:description) %></th>
+    <th><%= model_class.human_attribute_name(:phone) %></th>
+    <% if user_signed_in? %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    <% end %>
+  </tr>
+  </thead>
+  <% @franken_breweries_retired.each do |franken_brewery| %>
+      <tr>
+        <td><%= franken_brewery.brewer_name %></td>
+        <td><%= franken_brewery.city %></td>
+        <td nowrap><%= franken_brewery.district %> Franconia</td>
+        <td><%= franken_brewery.rbid %></td>
+        <td><%= franken_brewery.brewer_type %></td>
+        <td><%= franken_brewery.score %></td>
+        <td><%= franken_brewery.lat %></td>
+        <td><%= franken_brewery.lon %></td>
+        <td><a href="<%= franken_brewery.web %>"><%=franken_brewery.web %></a></td>
+        <td><%= franken_brewery.description %></td>
+        <td><%= franken_brewery.phone %></td>
+        <% if user_signed_in? %>
+            <td>
+              <%= link_to franken_brewery_path(franken_brewery), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                  <%= glyph 'info-sign' %>
+                  <%= glyph 'pencil' %>
+              <% end %>
+              <%= link_to franken_brewery_path(franken_brewery), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                  <%= glyph 'remove' %>
+              <% end %>
+            </td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<% if user_signed_in? %>
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+                new_franken_brewery_path,
+                :class => 'btn btn-primary' %>
+<% end %>

@@ -4,8 +4,8 @@
 <div class="page-header">
   <h1><%= @franken_breweries %></h1>
 </div>
-<div style='width: 800px;border:1px solid #ccc;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div style='width: 100%;border:1px solid #ccc;'>
+  <div id="map" style='width: 100%; height: 400px;'></div>
 </div>
 
 <script type="text/javascript">
@@ -22,7 +22,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     <% @city.each do |brewery| %>
       <tr>
         <td>
-          <%= link_to franken_brewery_path(brewery)  do %><%= brewery.brewer_name %><%- end -%>
+          <%= link_to franken_brewery_path(brewery)  do %><%= brewery.brewer_name %><% end %>
         </td>
       </tr>
     <% end %>

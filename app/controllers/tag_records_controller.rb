@@ -25,10 +25,11 @@ class TagRecordsController < ApplicationController
   # POST /tag_records.json
   def create
     @tag_record = TagRecord.new(tag_record_params)
-
+    @tag = Tag.where(:id, @tag_record.tag_id)
+    @franken_beer = FrankenBeer.where(:id, @tag_record.franken_beer_id)
     respond_to do |format|
       if @tag_record.save
-        format.html { redirect_to @tag_record, notice: 'Tag record was successfully created.' }
+        format.html { redirect_to @tag, 'successfully added.' }
         format.json { render :show, status: :created, location: @tag_record }
       else
         format.html { render :new }

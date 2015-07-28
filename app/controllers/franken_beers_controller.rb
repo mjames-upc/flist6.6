@@ -1,12 +1,15 @@
 class FrankenBeersController < ApplicationController
   before_action :set_franken_beer, only: [:show, :edit, :update, :destroy, :vote]
   helper_method :sort_column, :sort_direction
+  require 'will_paginate/array'
 
   # GET /franken_beers
   # GET /franken_beers.json
   def index
     @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction).take(25)
   end
+
+
 
   # GET /franken_beers/1
   # GET /franken_beers/1.json

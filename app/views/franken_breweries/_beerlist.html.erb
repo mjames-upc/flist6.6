@@ -1,0 +1,29 @@
+<%- model_class = FrankenBrewery -%>
+<table class="table table-striped tablesorter" id="beer_table">
+  <thead>
+  <tr>
+    <th></th>
+    <th align="center"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @brewery_records.each do |beer| %>
+      <tr>
+        <td>
+          <%= link_to franken_beer_path(beer)  do %><%= beer.beername %><% end %>
+          <% if beer.active == false%>
+              (Retired)
+          <% end %>
+        </td>
+
+        <td align="center">
+          <% if beer.alcohol > 0 %>
+              <%= beer.alcohol %>%
+          <% else %>
+              -
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,14 +1,9 @@
 <%- model_class = FrankenBrewery -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => 'Cities' %></h1>
+  <h1><%=t '.title', :default => 'Franconian Breweries - Cities' %></h1>
 </div>
 
 <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
-<% @unique_cities.each do |city| %>
-  <%= link_to city_path(city), :class => 'btn btn-lg', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-    <span style="font-size:<%= (city[1]+3)*5 %>px;"><%= city[0] %></a></span>
-  <%- end -%>
-<% end %>
-
+<div id="citycloud"><%= render "citycloud" %></div>

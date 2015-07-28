@@ -27,7 +27,7 @@
     <% @beer_ratings.each do |rating| %>
       <tr>
         <td>
-          <%= link_to franken_rating_path(rating)  do %><%= rating.franken_beer.beername %><%- end -%>
+          <%= link_to franken_rating_path(rating)  do %><%= rating.franken_beer.beername %><% end %>
         </td>
         <td><%= rating.comment %></td>
         <td><%= rating.score %></td>

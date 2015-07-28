@@ -1,0 +1,6 @@
+<%- model_class = FrankenBrewery -%>
+<% @unique_cities.each do |city| %>
+    <%= link_to city_path(city[0]), :class => 'btn btn-lg', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+        <span style="font-size:<%= (city[1]+3)*5 %>px;"><%= city[0] %></a></span>
+    <% end %>
+<% end %>

@@ -1,12 +1,18 @@
 class FrankenBreweriesController < ApplicationController
   before_action :set_franken_brewery, only: [:show, :edit, :update, :destroy]
 
+
+# frankenbier_development-# update franken_ratings set franken_brewery_id = (select id from franken_breweries where rbid = franken_ratings.rbbrewer);
+# frankenbier_development-# update franken_ratings set franken_beer_id = (select id from franken_beers where rbid = franken_ratings.rbid);
+
+
+
   # GET /franken_breweries
   # GET /franken_breweries.json
   def index
     @franken_breweries = FrankenBrewery.all
     @franken_beers = FrankenBeer.all
-
+    @unique_cities = FrankenBrewery.all.group(:city).count.sort
 
     @franken_breweries_retired = FrankenBrewery.all.where(:active => false)
     @markers_breweries_retired = Gmaps4rails.build_markers(@franken_breweries_retired) do |franken_brewery, marker|

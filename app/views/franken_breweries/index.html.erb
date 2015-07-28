@@ -16,11 +16,17 @@
 
   <div id='sidebar_container'></div>
 
+  <div id="" style='float:right; width:60%'>
+    <%= render partial: 'cities/citycloud'%>
+  </div>
+
   <div id="map" style='float:left; width: 40%; height: 600px;'></div>
 
   <div id="list" style='float:right; width:60%'>
     <%= render partial: 'brewerlist',  object:  @franken_breweries_active %>
   </div>
+
+
 
 </div>
 

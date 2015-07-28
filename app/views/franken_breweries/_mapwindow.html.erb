@@ -1,0 +1,13 @@
+<%- model_class = FrankenBrewery -%>
+<span class="infowindow">
+  <h3>
+    <a target="_blank" href="http://www.ratebeer.com/brewers/name/8364/"><%= franken_brewery.brewer_name %></a>
+  </h3>
+  <span class="maplink">
+    <a href="#"><%= franken_brewery.address %>, <%= franken_brewery.city %></a><br><%= franken_brewery.district %> Franconia
+  </span>
+  <br>
+  <span><%= icon('clock-o')%> <%= franken_brewery.hours %></span>
+  <br>
+  <span><%= icon('phone')%> <%= franken_brewery.phone %></span>
+</span>
