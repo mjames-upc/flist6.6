@@ -13,7 +13,6 @@ class FrankenBrewery < ActiveRecord::Base
   def create_slug
     self.slug = self.brewer_name.parameterize
     self.city_slug = self.city.parameterize
-    self.dist_slug = self.district.parameterize
   end
 
 end
