@@ -26,7 +26,11 @@ class FrankenBreweriesController < ApplicationController
       marker.infowindow render_to_string(:partial => "/franken_breweries/mapwindow", :locals => { :franken_brewery => franken_brewery}).gsub(/\n/, '').gsub(/"/, '\"')
     end
 
-    @franken_breweries_active = FrankenBrewery.all.where(:active => true)
+    #@franken_breweries_active = FrankenBrewery.all.where(:active => true)
+
+    @franken_breweries_active = FrankenBrewery.select("franken_breweries.*, COUNT(franken_beers.id) beer_count").joins("LEFT OUTER JOIN franken_beers ON franken_beers.franken_brewery_id = franken_breweries.id").where(:active => true).group("franken_breweries.id").order("brewer_name   asc")
+
+
     @franken_breweries_upper = FrankenBrewery.all.where(district: "Upper", :active => true)
     @franken_breweries_middle = FrankenBrewery.all.where(district: "Middle", :active => true)
     @franken_breweries_lower = FrankenBrewery.all.where(district: "Lower", :active => true)

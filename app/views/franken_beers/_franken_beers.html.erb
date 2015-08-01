@@ -14,7 +14,7 @@
   <tbody>
     <% @franken_beers.each do |franken_beer| %>
         <tr>
-          <td><%= link_to franken_beer_path(franken_beer)  do %><%= franken_beer.beername %><% end %></td>
+          <td><a href="http://www.ratebeer.com/b/<%= franken_beer.rbid %>/" target="_blank"><%= franken_beer.beername %></a></td>
           <td align="center">
             <% if franken_beer.alcohol > 0 %>
                 <%= franken_beer.alcohol %>%

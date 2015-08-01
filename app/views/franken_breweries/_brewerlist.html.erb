@@ -6,6 +6,7 @@
     <th><%= model_class.human_attribute_name(:city) %></th>
     <th></th>
     <th data-sorter="false"></th>
+    <th>#</th>
     <th><%= model_class.human_attribute_name(:score) %></th>
     <th><%= model_class.human_attribute_name(:web) %></th>
     <th><%= model_class.human_attribute_name(:phone) %></th>
@@ -21,6 +22,7 @@
         <td><%= link_to city_path(franken_brewery.city), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do  %><%=  franken_brewery.city %><% end %></td>
         <td nowrap><%= franken_brewery.district %> Franconia</td>
         <td><%= franken_brewery.brewer_type %></td>
+        <td><%= link_to franken_brewery_path(franken_brewery), :onclick => 'showMarker(franken_brewery.id); return false', :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do  %><%= franken_brewery.beer_count %><% end %></td>
         <td><%= franken_brewery.score %></td>
         <td><a href="<%= franken_brewery.web %>"><%=icon('link') %></a>
         </td>

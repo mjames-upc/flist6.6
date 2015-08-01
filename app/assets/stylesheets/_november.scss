@@ -204,7 +204,7 @@ h6 {
   color: #444444;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
-  text-transform: uppercase;
+#  text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.6;
   margin: 1.5em 0 0.75em 0;
@@ -647,13 +647,12 @@ input[type="submit"] {
   display: inline-block;
   position: relative;
   height: 50px;
-  background-color: #333;
+  background-color: #cc5000;
   color: white !important;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-size: 1.6rem;
   font-weight: 400 !important;
-  text-transform: uppercase;
   text-align: center;
   line-height: 50px;
   border: none;

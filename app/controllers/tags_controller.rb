@@ -14,7 +14,18 @@ class TagsController < ApplicationController
     @tag = Tag.find_by_simple!(params[:id])
     @tag_records = FrankenBeer.joins(:tag_records).where(tag_records: { tag_id: @tag.id }).select('distinct franken_beers.*, tag_records.id as tag_record_id').to_a
     if params.has_key?(:search)
-      @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction)
+      #@franken_beers =  FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction)
+
+      #@franken_beers =  FrankenBeer.find(:all,:conditions => ["franken_beers.id NOT IN (?)", @tag_records.id])
+      #@franken_beers =  FrankenBeer.where.not(id: @tag_records.id)
+
+      #@franken_beers =  FrankenBeer.find(:all, :conditions => ["franken_beers.id NOT IN (?)", @tag_records.id])
+
+
+      #@franken_beers =  FrankenBeer.where('id NOT IN (SELECT DISTINCT(franken_beer_id) FROM tag_records where tag_id = )')
+
+      @franken_beers = FrankenBeer.includes(:tag_records).where(tag_records: { franken_beer_id: nil }).search(params[:search]).order(sort_column + " " + sort_direction)
+
     else
       @franken_beers = []
     end

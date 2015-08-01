@@ -6,7 +6,7 @@ class FrankenBeersController < ApplicationController
   # GET /franken_beers
   # GET /franken_beers.json
   def index
-    @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction).take(25)
+    @franken_beers = FrankenBeer.all.search(params[:search]).order(sort_column + " " + sort_direction)
   end
 
 
